@@ -2,6 +2,7 @@
 import time
 import urllib
 import smtplib
+import os
 from bs4 import BeautifulSoup
 
 URL = 'SPECIFY GRADE SOURCE URL HERE'
@@ -27,8 +28,9 @@ CHAR_NEWLINE = '\n'
 TIME_STR_FORMAT = '%Y-%m-%d %H:%M:%S' # Feel free to modify the format
 PARSER = 'html.parser'
 
-LAST_UPDATE = 'ref/lastupdate' # this file must be present prior to running
-LAST_CHECK =  'ref/lastcheck'
+# lastupdate file must be present prior to running, empty or not
+LAST_UPDATE = os.path.dirname(os.path.realpath(__file__)) + '/'+ 'ref/lastupdate'
+LAST_CHECK =  os.path.dirname(os.path.realpath(__file__)) + '/'+ 'ref/lastcheck'
 
 STR_UPDATE = 'Updated! Time is'
 STR_NO_UPDATE = 'No update at'
