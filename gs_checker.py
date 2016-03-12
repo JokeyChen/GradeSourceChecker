@@ -5,6 +5,8 @@ def main():
         return
     try:
         interval = int(raw_input('Please specify the checking interval (in minute):'))
+        if interval == 0:
+            raise ValueError
     except ValueError:
         print 'Invalid interval. Program aborts.'
         return
