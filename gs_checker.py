@@ -72,26 +72,26 @@ def check_diff(time_on_gs):
         return 1
     lastupdate.close()
 
-def update_lastupdate(time_on_gs):
+def update_lastupdate(time_string):
     """Overwrite the lastupdate file with given time string.
 
     Keyword arguments:
-    time_on_gs -- formatted time string to be written
+    time_string -- formatted time string to be written
     """
     lastupdate = open(LAST_UPDATE, FILE_WRITE_MODE)
     # TODO: Error checking
-    lastupdate.write(time_on_gs)
+    lastupdate.write(time_string)
     lastupdate.close()
 
-def update_lastcheck(current_time_str):
+def update_lastcheck(time_string):
     """Overwrite the lastcheck file with given time string.
 
     Keyword arguments:
-    time_on_gs -- formatted time string to be written
+    time_string -- formatted time string to be written
     """
     lastcheck = open(LAST_CHECK, FILE_WRITE_MODE)
     # TODO: Error checking
-    lastcheck.write(current_time_str + CHAR_NEWLINE)
+    lastcheck.write(time_string + CHAR_NEWLINE)
     lastcheck.close()
 
 def send_email():
