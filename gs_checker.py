@@ -57,7 +57,11 @@ def find_update(soup):
     return (update[4].contents[1])[1:] + '\n'
 
 def check_diff(time_on_gs):
-    """
+    """Return 0 if there are no difference between time on GradeSource and
+    locally stored time, and return 1 if there are difference.
+
+    Keyword arguments:
+    time_on_gs -- string extracted from the GradeSource webpage
     """
     lastupdate = open(LAST_UPDATE, FILE_READ_MODE)
     # TODO: Error Checking
