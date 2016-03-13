@@ -84,7 +84,10 @@ def update_lastupdate(time_on_gs):
     lastupdate.close()
 
 def update_lastcheck(current_time_str):
-    """
+    """Overwrite the lastcheck file with given time string.
+
+    Keyword arguments:
+    time_on_gs -- formatted time string to be written
     """
     lastcheck = open(LAST_CHECK, FILE_WRITE_MODE)
     # TODO: Error checking
