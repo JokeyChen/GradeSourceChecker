@@ -95,8 +95,7 @@ def update_lastcheck(current_time_str):
     lastcheck.close()
 
 def send_email():
-    """
-    """
+    """Send email with provided information."""
     a = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
     a.starttls()
     a.login(MAIL_LOGIN, MAIL_PW)
