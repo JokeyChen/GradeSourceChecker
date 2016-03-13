@@ -47,7 +47,10 @@ def get_webpage():
     return BeautifulSoup(urllib.urlopen(URL).read(), PARSER)
 
 def find_update(soup):
-    """
+    """Return the Last Update time found from the given soup object.
+
+    Keyword arguments:
+    soup -- the GradeSource soup object
     """
     # TODO: need to come up with a more generic way to find the update string
     update = soup.find_all('font')
