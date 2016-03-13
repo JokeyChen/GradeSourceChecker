@@ -44,8 +44,7 @@ def get_current_time_str():
 
 def get_webpage():
     """Return the BeautifulSoup object from given URL and parser"""
-    content = urllib.urlopen(URL).read()
-    return BeautifulSoup(content, PARSER)
+    return BeautifulSoup(urllib.urlopen(URL).read(), PARSER)
 
 def find_update(soup):
     """
