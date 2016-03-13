@@ -73,7 +73,10 @@ def check_diff(time_on_gs):
     lastupdate.close()
 
 def update_lastupdate(time_on_gs):
-    """
+    """Overwrite the lastupdate file with given time string.
+
+    Keyword arguments:
+    time_on_gs -- formatted time string to be written
     """
     lastupdate = open(LAST_UPDATE, FILE_WRITE_MODE)
     # TODO: Error checking
