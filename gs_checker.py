@@ -39,13 +39,11 @@ STR_ERR_SEND_EMAIL = 'Error trying to send email!'
 
 
 def get_current_time_str():
-    """
-    """
+    """Return the formatted current time string"""
     return time.strftime(TIME_STR_FORMAT, time.localtime())
 
 def get_webpage():
-    """
-    """
+    """Return the BeautifulSoup object from given URL and parser"""
     content = urllib.urlopen(URL).read()
     return BeautifulSoup(content, PARSER)
 
