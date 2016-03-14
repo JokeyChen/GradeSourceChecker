@@ -16,7 +16,7 @@ Make sure that the lastupdate file is present! Or the IOError will occur. The la
 If you want to run this script at specific time or day, or between certain intervals, please refer to the following section **Scheduling**.
 
 ## Scheduling
-For unix system users, there is a simple solution for scheduling this script called crontab. If you want to run this script every 15 minutes, add this entry to crontab -e (assuming that you clone this repository on the home directory):
+For unix system users, there is a simple solution called crontab for scheduling this script. If you want to run this script every 15 minutes, for instance, add this entry to crontab -e (assuming that this repository is in the home directory):
 	
 	*/15 * * * * ~/GradeSourceChecker/gs_checker.py 
 
