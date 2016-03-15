@@ -4,22 +4,7 @@ import urllib
 import smtplib
 import os
 from bs4 import BeautifulSoup
-
-URL = 'SPECIFY GRADE SOURCE URL HERE'
-SENDER = 'SPECIFY EMAIL SENDER HERE'
-RECEIVERS = ['SPECIFY EMAIL RECEIVERS HERE']
-MSG = """From: John Doe <johndoe@xxx.com>
-To: John Doe <johndoe@yyy.com>
-Subject: GradeSource Update
-
-GradeSource Update Detected!
-FEEL FREE TO MODIFY THE EMAIL MESSAGE HERE
-"""
-SMTP_SERVER = 'SPECIFY THE SMTP SERVER HERE. DO NOT FORGET ITS PORT BELOW'
-SMTP_PORT = 587
-MAIL_LOGIN = 'SPECIFY LOGIN FOR SMTP'
-MAIL_PW = 'SPECIFY PASSWORD FOR SMTP HERE'
-
+from json import load
 
 FILE_READ_MODE = 'r'
 FILE_WRITE_MODE = 'w'
@@ -28,23 +13,28 @@ CHAR_NEWLINE = '\n'
 TIME_STR_FORMAT = '%Y-%m-%d %H:%M:%S' # Feel free to modify the format
 PARSER = 'html.parser'
 
-# lastupdate file must be present prior to running, empty or not
+# lastupdate and data file must be present prior to running, empty or not
 LAST_UPDATE = os.path.dirname(os.path.realpath(__file__)) + '/'+ 'ref/lastupdate'
 LAST_CHECK =  os.path.dirname(os.path.realpath(__file__)) + '/'+ 'ref/lastcheck'
+DATA = os.path.dirname(os.path.realpath(__file__)) + '/'+ 'ref/data'
 
 STR_UPDATE = 'Updated! Time is'
 STR_NO_UPDATE = 'No update at'
 STR_ERR_SEND_EMAIL = 'Error trying to send email!'
 
-
+def read_data():
+    """
+    """
+    # TODO: Error Checking
+    return load(open(DATA, FILE_READ_MODE))
 
 def get_current_time_str():
     """Return the formatted current time string."""
     return time.strftime(TIME_STR_FORMAT, time.localtime())
 
-def get_webpage():
+def get_webpage(my_data):
     """Return the BeautifulSoup object from given URL and parser."""
-    return BeautifulSoup(urllib.urlopen(URL).read(), PARSER)
+    return BeautifulSoup(urllib.urlopen(my_data['url']).read(), PARSER)
 
 def find_update(soup):
     """Return the Last Update time found from the given soup object.
@@ -94,25 +84,26 @@ def update_lastcheck(time_string):
     lastcheck.write(time_string + CHAR_NEWLINE)
     lastcheck.close()
 
-def send_email():
+def send_email(my_data):
     """Send email with provided information."""
-    a = smtplib.SMTP(SMTP_SERVER, SMTP_PORT)
+    a = smtplib.SMTP(my_data['smtp_server'], my_data['smtp_port'])
     a.starttls()
-    a.login(MAIL_LOGIN, MAIL_PW)
+    a.login(my_data['mail_login'], my_data['mail_pw'])
     try:
-        a.sendmail(SENDER, RECEIVERS, MSG)
+        a.sendmail(my_data['sender'], my_data['receivers'], my_data['msg'])
     except SMTPException:
         print STR_ERR_SEND_EMAIL
 
 
 def main():
+    my_data = read_data()
     current_time_str = get_current_time_str()
-    soup = get_webpage()
+    soup = get_webpage(my_data)
     time_on_gs = find_update(soup)
     if check_diff(time_on_gs):
         print STR_UPDATE, current_time_str
         update_lastupdate(time_on_gs)
-        send_email()
+        send_email(my_data)
     else:
         print STR_NO_UPDATE, current_time_str
     update_lastcheck(current_time_str)
