@@ -1,3 +1,4 @@
+#!/usr/bin/python
 from json import dump
 
 MY_DICT = {'url': 'SPECIFY GRADE SOURCE URL HERE',
@@ -31,3 +32,4 @@ def main():
 
 if __name__ == '__main__':
     main()
+
