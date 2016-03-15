@@ -1,6 +1,7 @@
 #!/usr/bin/python
 from json import dump
 from os import mkdir
+from getpass import getpass
 
 STR_WELCOME_MSG = 'PLEASE MAKE SURE THAT YOUR INPUT IS CORRECT!\nNow setting up...'
 
@@ -24,7 +25,7 @@ def generate_dict():
         my_dict['smtp_port'] = int(raw_input('Invalid port. Please try again: '))
 
     my_dict['mail_login'] = raw_input('Please specify the email login (username) here: ')
-    my_dict['mail_pw'] = raw_input('Please specify the email password here: ')
+    my_dict['mail_pw'] = getpass('Please specify the email password here: ')
 
     my_dict['msg'] = """From: %s <%s>
 To: %s <%s>
