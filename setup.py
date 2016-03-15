@@ -1,5 +1,6 @@
 #!/usr/bin/python
 from json import dump
+from os import mkdir
 
 MY_DICT = {'url': 'SPECIFY GRADE SOURCE URL HERE',
 'sender': 'SPECIFY EMAIL SENDER HERE',
@@ -17,16 +18,27 @@ FEEL FREE TO MODIFY THE EMAIL MESSAGE HERE
 """
 }
 
+def create_dir():
+    """Make the reference director if not exists."""
+    try:
+        mkdir('ref')
+    except OSError:
+        # ref directory already exists
+        pass
+
 def create_data():
+    """Create the data file."""
     f = open('ref/data', 'w')
     dump(MY_DICT, f)
     f.close()
 
 def create_lastupdate():
+    """Create the lastupdate file."""
     f = open('ref/lastupdate', 'w')
     f.close()
 
 def main():
+    create_dir()
     create_data()
     create_lastupdate()
 
