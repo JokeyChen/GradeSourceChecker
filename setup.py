@@ -6,9 +6,11 @@ from getpass import getpass
 STR_WELCOME_MSG = 'PLEASE MAKE SURE THAT YOUR INPUT IS CORRECT!\nNow setting up...'
 
 def print_welcome_msg():
+    """Print the command line welcome message."""
     print STR_WELCOME_MSG
 
 def generate_dict():
+    """Return the data dictionary which entries are based on user input."""
     my_dict = {}
     my_dict['url'] = raw_input('Please specify GradeSource url here: ')
     sender = raw_input('Please specify sender\'s email address here: ')
@@ -64,4 +66,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
