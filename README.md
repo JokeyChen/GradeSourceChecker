@@ -14,7 +14,7 @@ If it shows "-rwxr--r--" for both files, you are good to go. Otherwise, change t
 After doing so, run the setup process by typing:
 
 	./setup.py
-And type in the information specified by the prompt. **It is your own responsibility to make sure that the information is 100% correct. Incorrect input will result in undefined behavior.**
+And type in the information asked by the prompt. **It is your own responsibility to make sure that the information is 100% correct. Incorrect input will result in undefined behavior.**
 
 Sender's name and receiver's name are for email message only. They would not affect the checking process. Sample output is in the *Example* section.
 
