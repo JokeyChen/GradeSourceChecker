@@ -4,6 +4,7 @@ from os import mkdir
 from getpass import getpass
 
 STR_WELCOME_MSG = 'PLEASE MAKE SURE THAT YOUR INPUT IS CORRECT!\nNow setting up...'
+STR_DONE_MSG = 'SETUP DONE!'
 
 def print_welcome_msg():
     """Print the command line welcome message."""
@@ -57,12 +58,17 @@ def create_lastupdate():
     f = open('ref/lastupdate', 'w')
     f.close()
 
+def print_done_msg():
+    """Print the command line done message."""
+    print STR_DONE_MSG
+
 def main():
     print_welcome_msg()
     my_dict = generate_dict()
     create_dir()
     create_data(my_dict)
     create_lastupdate()
+    print_done_msg()
 
 if __name__ == '__main__':
     main()
