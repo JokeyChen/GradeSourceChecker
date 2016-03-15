@@ -5,14 +5,15 @@ This is a simple script that can be schedule to run to check GradeSource website
 This script reads the given url webpage then find the updated time on the webpage. It then compares the time on GradeSource (time_on_gs) with the latest updated time in a local file called lastupdate. If they differ, that means GradeSource has updated the scores recently. The script then overwrites the lastupdate file with time_on_gs. Every time the script runs, it would also log the time of checking into a file called lastcheck. Both lastcheck and lastupdate are in the "ref/" directory. If there are update detected, it will then send an email to the address specified immediately. Information of email sending and url are stored in data file in "ref/" directory
 
 ## Installation
-You can install this script by simply git clone the repository. Then, change the perssion of setup.py as well as gs_checker.py to 744. You can do so by running command:
+You can install this script by simply git clone the repository. Then, make sure the permission of setup.py and gs_checker.py is 744. You can check that by running command:
 
-	chmod 744 setup.py gs_checker.py
-	
+	ls -l *.py
+If it shows "-rwxr--r--" for both files, you are good to go. Otherwise, change the mode to 744 by typing:
+
+	chmod 744 *.py
 After doing so, run the setup process by typing:
 
 	./setup.py
-	
 And type in the information specified by the prompt. **It is your own responsibility to make sure that the information is 100% correct. Incorrect input will result in undefined behavior.**
 
 Sender's name and receiver's name are for email message only. They would not affect the checking process. Sample output is in the *Example* section.
@@ -27,8 +28,6 @@ If you want to run this script at specific time or day, or between certain inter
 
 ## Example
 Assume that we are now in the repository directory:
-### Change the permission
-	chmod 744 setup.py gs_checker.py
 
 ### setup.py
 	$ ./setup.py
