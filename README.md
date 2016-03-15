@@ -50,7 +50,7 @@ Assume that we are now in the repository directory:
 	Updated! Time is 2016-03-15 16:39:04
 	$ ./gs_checker.py
 	No update at 2016-03-15 16:39:24
-After the first run, the receiver should receive an email about this update. 
+After the first run, the receiver you specified during the setup process should receive an email about this update. 
 
 ## Scheduling
 For unix system users, there is a simple solution called crontab for scheduling this script. If you want to run this script every 15 minutes, for instance, add this entry to crontab -e (assuming that this repository is in the home directory):
