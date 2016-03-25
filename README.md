@@ -1,5 +1,5 @@
 # GradeSourceChecker
-This is a simple script that can be schedule to run to check GradeSource website update. 
+This is a simple script that can be scheduled to check GradeSource website update. 
 
 ## Overview
 This script reads the given url webpage then find the updated time on the webpage. It then compares the time on GradeSource (time_on_gs) with the latest updated time in a local file called lastupdate. If they differ, that means GradeSource has updated the scores recently. The script then overwrites the lastupdate file with time_on_gs. Every time the script runs, it would also log the time of checking into a file called lastcheck. Both lastcheck and lastupdate are in the "ref/" directory. If there are update detected, it will then send an email to the address specified immediately. Information of email sending and url are stored in data file in "ref/" directory
